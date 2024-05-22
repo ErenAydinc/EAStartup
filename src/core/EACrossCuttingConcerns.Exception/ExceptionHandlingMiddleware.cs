@@ -52,9 +52,10 @@ namespace EACrossCuttingConcerns.Exception
                     StackTrace = exception.StackTrace
                 }
             };
-            //Loglama
+            // Burada yakalanan exception database'deki 'exceptionlogs' tablosuna loglanır.
             ExceptionLog exceptionLog = new(response.Message, exception.StackTrace, exception.GetType().Name,response.StatusCode);
             await exceptionLogService.Add(exceptionLog);
+
             // Response Json formatına çevrilir ve WriteAsync fonksiyonu ile 
             // HttpContext'in response'u doldurulur.
             var payload = JsonConvert.SerializeObject(response);
