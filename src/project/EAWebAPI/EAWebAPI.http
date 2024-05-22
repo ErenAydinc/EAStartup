@@ -1,0 +1,6 @@
+@EAWebAPI_HostAddress = http://localhost:5201
+
+GET {{EAWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
