@@ -2,14 +2,27 @@
 
 namespace EASecurity.Authorization
 {
-    public class User(string? firstName, string? lastName, string? email, List<string>? roles, bool? isActive, string? token, string? password) : EAEntity
+    public class User : EAEntity
     {
-        public string? FirstName { get; set; } = firstName;
-        public string? LastName { get; set; } = lastName;
-        public string? Email { get; set; } = email;
-        public List<string>? Roles { get; set; } = roles;
-        public bool? IsActive { get; set; } = isActive;
-        public string? Token { get; set; } = token;
-        public string? Password { get; set; } = password;
+        public User()
+        {
+            
+        }
+        public User(string? firstName, string? lastName, string? email, bool? isActive, string? token, string? password)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            IsActive = isActive;
+            Token = token;
+            Password = password;
+        }
+
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public bool? IsActive { get; set; }
+        public string? Token { get; set; }
+        public string? Password { get; set; }
     }
 }

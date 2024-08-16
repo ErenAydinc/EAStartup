@@ -1,9 +1,11 @@
-﻿using EACrossCuttingConcerns.Exception;
+﻿using EAApplication.Users.Commands;
+using EAApplication.Users.DTOs;
+using EAApplication.Users.Queries;
 using EADomain;
-using EASecurity.Authorization;
-using EAService;
+using EAService.Users;
+using EAWebAPI.EAAttribute;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -14,60 +16,58 @@ namespace EAWebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
-
-        public AuthController(IUserService userService)
+        private readonly IMediator _mediator;
+        public AuthController(IUserService userService, IMediator mediator)
         {
+            _mediator = mediator;
             _userService = userService;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginUser user)
+        public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
         {
             //Error checks
-            if (String.IsNullOrEmpty(user.Email))
+            if (String.IsNullOrEmpty(loginUserDto.Email))
             {
                 return BadRequest(new { message = "User email needs to entered" });
             }
-            else if (String.IsNullOrEmpty(user.Password))
+            else if (String.IsNullOrEmpty(loginUserDto.Password))
             {
                 return BadRequest(new { message = "Password needs to entered" });
             }
 
             //Try login
-            var loggedUser = await _userService.Login(new User(null,null,user.Email,null,true,null,user.Password));
+            var loggedUser = await _mediator.Send(new LoginUserCommand(loginUserDto));
+            return Ok(loggedUser);
 
-            //Return responses
-            if (loggedUser!=null)
-            {
-                return Ok(loggedUser);
-            }
-            return BadRequest(new { message = "User login unsuccessful" });
+
         }
+
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegisterUser user)
+        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
         {
             //Error checks
-            if (String.IsNullOrEmpty(user.Email))
+            if (String.IsNullOrEmpty(registerUser.Email))
             {
                 return BadRequest(new { message = "User email needs to entered" });
             }
-            else if (String.IsNullOrEmpty(user.FirstName))
+            else if (String.IsNullOrEmpty(registerUser.FirstName))
             {
                 return BadRequest(new { message = "First Name needs to entered" });
             }
-            else if (String.IsNullOrEmpty(user.LastName))
+            else if (String.IsNullOrEmpty(registerUser.LastName))
             {
                 return BadRequest(new { message = "Last Name needs to entered" });
             }
-            else if (String.IsNullOrEmpty(user.Password))
+            else if (String.IsNullOrEmpty(registerUser.Password))
             {
                 return BadRequest(new { message = "Password needs to entered" });
             }
 
             //Try login
-            var registeredUser = await _userService.Register(new User(user.FirstName,user.LastName,user.Email,user.Roles,true,null,user.Password));
+            var registeredUser = await _userService.Register(registerUser);
 
             //Return responses
             if (registeredUser != null)
@@ -76,7 +76,7 @@ namespace EAWebAPI.Controllers
             }
             return BadRequest(new { message = "User registration unsuccessful" });
         }
-        [Authorize(Roles ="User")]
+        [EAAuthorize("SystemAdmin")]
         [HttpGet]
         public IActionResult Test()
         {

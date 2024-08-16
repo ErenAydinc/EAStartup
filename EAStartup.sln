@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAService", "src\project\EA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EASecurity.Authorization", "src\core\EASecurity.Authorization\EASecurity.Authorization.csproj", "{EF13CC36-C60F-45E0-B04B-071FA2D69337}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EACrossCuttingConcerns.ExceptionLogging", "src\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj", "{478D9A10-185F-4FA7-899C-88F122CA4B21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EACrossCuttingConcerns.ExceptionLogging", "src\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj", "{478D9A10-185F-4FA7-899C-88F122CA4B21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAApplication", "src\project\EAApplication\EAApplication.csproj", "{9C064872-0942-4809-9CBA-0FC0D7BA9F68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAApplication", "src\project\EAApplication\EAApplication.csproj", "{9C064872-0942-4809-9CBA-0FC0D7BA9F68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EACQRS.Pipelines", "src\core\EACQRS.Pipelines\EACQRS.Pipelines.csproj", "{B5895510-F099-4CF0-97D5-2B623A526B56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{9C064872-0942-4809-9CBA-0FC0D7BA9F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C064872-0942-4809-9CBA-0FC0D7BA9F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C064872-0942-4809-9CBA-0FC0D7BA9F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5895510-F099-4CF0-97D5-2B623A526B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5895510-F099-4CF0-97D5-2B623A526B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5895510-F099-4CF0-97D5-2B623A526B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5895510-F099-4CF0-97D5-2B623A526B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{EF13CC36-C60F-45E0-B04B-071FA2D69337} = {A570BD05-C1C2-4212-A807-222D0B41264E}
 		{478D9A10-185F-4FA7-899C-88F122CA4B21} = {A570BD05-C1C2-4212-A807-222D0B41264E}
 		{9C064872-0942-4809-9CBA-0FC0D7BA9F68} = {FDB1301A-5255-43F4-8EDC-2ACB7FB48DCF}
+		{B5895510-F099-4CF0-97D5-2B623A526B56} = {A570BD05-C1C2-4212-A807-222D0B41264E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B31340F-6AA3-48AE-B348-6D53497EDA2F}

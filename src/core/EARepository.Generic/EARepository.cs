@@ -1,6 +1,7 @@
 ﻿using EACrossCuttingConcerns.Generic;
 using EARepository.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EARepository.Generic
 {
-    public class EARepository<T>:IEARepository<T> where T : EAEntity
+    public class EARepository<T> : IEARepository<T> where T : EAEntity
     {
         private DbContext _context;
         private DbSet<T> _dbSet;
@@ -89,7 +90,7 @@ namespace EARepository.Generic
             return _dbSet.AsNoTracking();
         }
 
-        public async Task<List<T>> GetAll(Expression<Func<T, bool>> predicate,bool? withDeleted=false)
+        public async Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, bool? withDeleted = false)
         {
             if (withDeleted is true)
             {
@@ -102,23 +103,37 @@ namespace EARepository.Generic
             }
         }
 
-        public async Task<IEAPaginatedList<T>> GetAllPaginate(Expression<Func<T, bool>>? predicate, int pageIndex = 1, int pageSize = 10, bool? withDeleted = false)
+        public async Task<IEAPaginatedList<T>> GetAllPaginate(Expression<Func<T, bool>>? predicate = null, int pageIndex = 1, int pageSize = 10, bool? withDeleted = false)
         {
-            if (withDeleted is true)
+            IQueryable<T> query = _dbSet;
+            if (withDeleted == true)
             {
-                var list = await _dbSet.Where(predicate).Skip((pageIndex-1)*pageSize).Take(pageSize).ToListAsync();
-                var count = await _dbSet.CountAsync();
-                var totalPages = (int)Math.Ceiling(count / (double)pageSize);
-                return new EAPaginatedList<T> ( list, count, totalPages );
+                query = query.IgnoreQueryFilters();
             }
-            else
+            if (predicate != null)
             {
-                var query = _dbSet.Where(x => !x.DeletedDate.HasValue);
-                var list = await query.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-                var count = await query.CountAsync();
-                var totalPages = (int)Math.Ceiling(count / (double)pageSize);
-                return new EAPaginatedList<T>(list, count, totalPages);
+                query = query.Where(predicate);
             }
+            query =query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var count = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(count / (double)pageSize);
+            return new EAPaginatedList<T>(await query.ToListAsync(), count, totalPages);
+            //if (withDeleted is false)
+            //{
+            //    _dbSet.IgnoreQueryFilters();
+            //    var list = await _dbSet.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+            //    var count = await _dbSet.CountAsync();
+            //    var totalPages = (int)Math.Ceiling(count / (double)pageSize);
+            //    return new EAPaginatedList<T>(list, count, totalPages);
+            //}
+            //else
+            //{
+            //    var query = _dbSet.Where(x => !x.DeletedDate.HasValue);
+            //    var list = await query.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+            //    var count = await query.CountAsync();
+            //    var totalPages = (int)Math.Ceiling(count / (double)pageSize);
+            //    return new EAPaginatedList<T>(list, count, totalPages);
+            //}
         }
         public async Task<T> Get(Expression<Func<T, bool>> predicate)
         {
@@ -134,10 +149,10 @@ namespace EARepository.Generic
             return await _dbSet?.FirstOrDefaultAsync(predicate);
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             entity.UpdatedDate = DateTime.UtcNow;
-            _dbSet.Update(entity);
+            await Task.FromResult(_dbSet.Update(entity));
         }
 
         public void UpdateRange(List<T> entity)

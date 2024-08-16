@@ -16,13 +16,12 @@ namespace EARepository.Abstractions
         public Task Delete(Expression<Func<T, bool>> predicate);
         public void DeleteRange(List<T> entities);
         public Task<List<T>> GetAll();
-        public IQueryable<T> GetAllQuery();
         public Task<List<T>> GetAll(Expression<Func<T, bool>>? predicate,bool? withDeleted=false);
-        public Task<IEAPaginatedList<T>> GetAllPaginate(Expression<Func<T, bool>>? predicate,int pageIndex=1,int pageSize=10,bool? withDeleted=false);
+        public Task<IEAPaginatedList<T>> GetAllPaginate(Expression<Func<T, bool>>? predicate=null,int pageIndex=1,int pageSize=10,bool? withDeleted=false);
         public Task<T> GetById(int id);
         public Task<T> GetById(Expression<Func<T, bool>> predicate);
         public Task<T> Get(Expression<Func<T, bool>> predicate);
-        public void Update(T entity);
+        public Task Update(T entity);
         public void UpdateRange(List<T> entity);
         public Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task<bool> Contains(T entity);

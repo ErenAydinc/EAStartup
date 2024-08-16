@@ -22,6 +22,35 @@ namespace EADataBase.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("EACQRS.Pipelines.MediatrRequestLogging.LoggeableRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CommandName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LoggeableRequests");
+                });
+
             modelBuilder.Entity("EACrossCuttingConcerns.ExceptionLogging.ExceptionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -59,6 +88,40 @@ namespace EADataBase.Migrations
                     b.ToTable("ExceptionLogs");
                 });
 
+            modelBuilder.Entity("EASecurity.Authorization.OperationClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OperationClaim");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 848, DateTimeKind.Local).AddTicks(7293),
+                            Name = "SystemAdmin"
+                        });
+                });
+
             modelBuilder.Entity("EASecurity.Authorization.User", b =>
                 {
                     b.Property<int>("Id")
@@ -88,9 +151,6 @@ namespace EADataBase.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Roles")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Token")
                         .HasColumnType("longtext");
 
@@ -100,6 +160,55 @@ namespace EADataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 847, DateTimeKind.Local).AddTicks(1034),
+                            Email = "ea@ea.com",
+                            FirstName = "ea",
+                            IsActive = true,
+                            LastName = "ea",
+                            Password = "$argon2id$v=19$m=65536,t=3,p=1$SU4wn/Lx8SkKhmpNhLGiwQ$M5y9dzXv5K8ePq0YnnB4cz3PVt3w9f+V5kPGFQL1mDY"
+                        });
+                });
+
+            modelBuilder.Entity("EASecurity.Authorization.UserOperationClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("OperationClaimId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserOperationClaim");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 849, DateTimeKind.Local).AddTicks(4157),
+                            OperationClaimId = 1,
+                            UserId = 1
+                        });
                 });
 #pragma warning restore 612, 618
         }

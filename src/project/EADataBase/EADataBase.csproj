@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\core\EACQRS.Pipelines\EACQRS.Pipelines.csproj" />
     <ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
     <ProjectReference Include="..\..\core\EASecurity.Authorization\EASecurity.Authorization.csproj" />
     <ProjectReference Include="..\EADomain\EADomain.csproj" />

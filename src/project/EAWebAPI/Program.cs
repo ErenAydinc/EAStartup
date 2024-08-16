@@ -1,23 +1,27 @@
+using EAApplication;
+using EACQRS.Pipelines;
 using EACrossCuttingConcerns.Exception;
 using EACrossCuttingConcerns.ExceptionLogging;
 using EADataBase;
+using EAService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
-using EAService;
 using Serilog;
-using EARepository.Abstractions;
-using EARepository.Generic;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDataBaseServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+builder.Services.AddDataBaseServices(builder.Configuration);
+builder.Services.AddServicesApplicationServices();
 builder.Services.AddExceptionLoggingServices();
+builder.Services.AddExceptionRequestPipelineServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
 
 #region ErrorLogging
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
