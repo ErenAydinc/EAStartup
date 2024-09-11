@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace EAApplication.Users.DTOs
 {
-    public class UserDto:EADTO
+    public class UserDto
     {
         public UserDto()
         {
 
         }
-        public UserDto(string? firstName, string? lastName, string? email, bool? isActive, string? token, string? password)
+        public UserDto(string? firstName, string? lastName, string? email, bool? isActive, string? token, string? password, int id)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -21,8 +21,10 @@ namespace EAApplication.Users.DTOs
             IsActive = isActive;
             Token = token;
             Password = password;
+            Id = id;
         }
 
+        public int Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }

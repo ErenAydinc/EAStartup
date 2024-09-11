@@ -11,7 +11,7 @@ namespace EAService.Users
         Task<User> GetByEmail(string email);
         Task<IEAPaginatedList<User>> GetAll(int pageIndex,int pageSize);
         Task<User> GetById(int id);
-        Task<User> Add(User user);
+        Task<User> Create(User user);
         Task<User> Update(User user);
         Task Delete(int id);
     }

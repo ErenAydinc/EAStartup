@@ -1,4 +1,5 @@
 ﻿using EASecurity.Authorization;
+using EAService.UserOperationClaims;
 using EAService.Users;
 using Isopoh.Cryptography.Argon2;
 using System;
@@ -12,7 +13,6 @@ namespace EAApplication.Users.Rules
     public class UserBusinessRules
     {
         private readonly IUserService _userService;
-
         public UserBusinessRules(IUserService userService)
         {
             _userService = userService;

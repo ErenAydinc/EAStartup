@@ -8,6 +8,6 @@ namespace EARepository.Abstractions
 {
     public class EADTO:IEADTO
     {
-        public virtual int Id { get; set; }
+        public int Id { get; set; }
     }
 }

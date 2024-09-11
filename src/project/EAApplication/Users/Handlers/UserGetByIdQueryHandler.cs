@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EAApplication.Users.Handlers
 {
-    public class UserGetByIdQueryHandler : IRequestHandler<UserGetByIdQuery, UserDto>
+    public class UserGetByIdQueryHandler : IRequestHandler<GetByIdUserQuery, UserDto>
     {
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
@@ -22,7 +22,7 @@ namespace EAApplication.Users.Handlers
             _userService = userService;
         }
 
-        public async Task<UserDto> Handle(UserGetByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserDto> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
         {
             var user = await _userService.GetById(request.Id);
             var userDto = _mapper.Map<UserDto>(user);

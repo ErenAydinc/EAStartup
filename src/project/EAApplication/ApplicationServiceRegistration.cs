@@ -1,4 +1,6 @@
-﻿using EAApplication.Users.Rules;
+﻿using EAApplication.Auth.Rules;
+using EAApplication.UserOperationClaims.Rules;
+using EAApplication.Users.Rules;
 using EACQRS.Pipelines;
 using EACQRS.Pipelines.MediatrRequestCaching;
 using EACQRS.Pipelines.MediatrRequestLogging;
@@ -26,7 +28,8 @@ namespace EAApplication
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             services.AddScoped<UserBusinessRules>();
-
+            services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<UserOperationClaimBusinessRules>();
             return services;
         }
     }

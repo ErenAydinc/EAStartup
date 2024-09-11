@@ -15,6 +15,8 @@ namespace EADataBase
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<ExceptionLog> ExceptionLogs { get; set; }
         public DbSet<LoggeableRequest> LoggeableRequests { get; set; }
 

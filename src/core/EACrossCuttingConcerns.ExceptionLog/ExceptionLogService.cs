@@ -13,7 +13,7 @@ namespace EACrossCuttingConcerns.ExceptionLogging
 
         public async Task<ExceptionLog> Add(ExceptionLog exceptionLog)
         {
-            await _unitOfWork.GetRepository<ExceptionLog>().AddAsync(exceptionLog);
+            await _unitOfWork.GetRepository<ExceptionLog>().Create(exceptionLog);
             await _unitOfWork.SaveChangesAsync();
             return exceptionLog;
         }

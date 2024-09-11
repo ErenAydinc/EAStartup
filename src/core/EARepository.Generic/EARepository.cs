@@ -1,13 +1,7 @@
 ﻿using EACrossCuttingConcerns.Generic;
 using EARepository.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EARepository.Generic
 {
@@ -21,7 +15,7 @@ namespace EARepository.Generic
             _dbSet = _context.Set<T>();
         }
 
-        public async Task AddAsync(T entity)
+        public async Task Create(T entity)
         {
 
             entity.CreatedDate = DateTime.Now;
@@ -29,15 +23,14 @@ namespace EARepository.Generic
             await _dbSet.AddAsync(entity);
         }
 
-        public async Task AddRange(IEnumerable<T> entity)
+        public async Task CreateRange(IEnumerable<T> entity)
         {
             await _dbSet.AddRangeAsync(entity);
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
-
-            _dbSet.Remove(entity);
+            await Task.FromResult(_dbSet.Remove(entity));
         }
 
         public async Task Delete(int id)
@@ -47,17 +40,10 @@ namespace EARepository.Generic
             _dbSet.Remove(entity);
         }
 
-        public async Task Delete(Expression<Func<T, bool>> predicate)
-        {
-            var entity = await GetById(predicate);
-
-            _dbSet.Remove(entity);
-        }
-
-        public void SoftDelete(T entity)
+        public async Task SoftDelete(T entity)
         {
             entity.DeletedDate = DateTime.UtcNow;
-            _dbSet.Update(entity);
+            await Task.FromResult(_dbSet.Update(entity));
         }
 
         public async Task SoftDelete(int id)
@@ -67,22 +53,26 @@ namespace EARepository.Generic
             _dbSet.Update(entity);
         }
 
-        public async Task SoftDelete(Expression<Func<T, bool>> predicate)
-        {
-            var entity = await GetById(predicate);
-            entity.DeletedDate = DateTime.UtcNow;
-            _dbSet.Update(entity);
-        }
-
         public void DeleteRange(List<T> entities)
         {
             _dbSet.RemoveRange(entities);
         }
 
+        public async Task SoftDeleteRange(List<int> ids)
+        {
+
+            foreach (var id in ids)
+            {
+                var entity = await GetById(id);
+                entity.DeletedDate = DateTime.UtcNow;
+                _dbSet.Update(entity);
+            }
+        }
+
 
         public async Task<List<T>> GetAll()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
         }
 
         public IQueryable<T> GetAllQuery()
@@ -94,12 +84,12 @@ namespace EARepository.Generic
         {
             if (withDeleted is true)
             {
-                return await _dbSet.Where(predicate).ToListAsync();
+                return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
             }
             else
             {
                 var query = _dbSet.Where(x => !x.DeletedDate.HasValue);
-                return await query.Where(predicate).ToListAsync();
+                return await query.Where(predicate).AsNoTracking().ToListAsync();
             }
         }
 
@@ -110,45 +100,37 @@ namespace EARepository.Generic
             {
                 query = query.IgnoreQueryFilters();
             }
+            if (withDeleted == false)
+            {
+                query = query.Where(x => !x.DeletedDate.HasValue);
+            }
             if (predicate != null)
             {
                 query = query.Where(predicate);
             }
-            query =query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var count = await query.CountAsync();
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var totalPages = (int)Math.Ceiling(count / (double)pageSize);
-            return new EAPaginatedList<T>(await query.ToListAsync(), count, totalPages);
-            //if (withDeleted is false)
-            //{
-            //    _dbSet.IgnoreQueryFilters();
-            //    var list = await _dbSet.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            //    var count = await _dbSet.CountAsync();
-            //    var totalPages = (int)Math.Ceiling(count / (double)pageSize);
-            //    return new EAPaginatedList<T>(list, count, totalPages);
-            //}
-            //else
-            //{
-            //    var query = _dbSet.Where(x => !x.DeletedDate.HasValue);
-            //    var list = await query.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            //    var count = await query.CountAsync();
-            //    var totalPages = (int)Math.Ceiling(count / (double)pageSize);
-            //    return new EAPaginatedList<T>(list, count, totalPages);
-            //}
+            var pageItemsCount = await query.CountAsync();
+            return new EAPaginatedList<T>(await query.AsNoTracking().ToListAsync(), pageIndex, pageSize, totalPages, pageItemsCount, count);
         }
-        public async Task<T> Get(Expression<Func<T, bool>> predicate)
+        public async Task<T?> Get(Expression<Func<T, bool>> predicate, bool? withDeleted=false)
         {
-            return await _dbSet.FirstOrDefaultAsync(predicate);
-        }
-        public async Task<T?> GetById(int id)
-        {
-            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
-        }
+            IQueryable<T> query = _dbSet;
+            if (withDeleted is true)
+                query = query.IgnoreQueryFilters();
+            else
+                query = query.Where(x=>!x.DeletedDate.HasValue);
 
-        public async Task<T> GetById(Expression<Func<T, bool>> predicate)
-        {
-            return await _dbSet?.FirstOrDefaultAsync(predicate);
+            return await query.FirstOrDefaultAsync(predicate);
         }
-
+        public async Task<T?> GetById(int id, bool? withDeleteted=false)
+        {
+            if (withDeleteted is true)
+                return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+            else
+                return await _dbSet.FirstOrDefaultAsync(x => x.Id == id && !x.DeletedDate.HasValue);
+        }
         public async Task Update(T entity)
         {
             entity.UpdatedDate = DateTime.UtcNow;

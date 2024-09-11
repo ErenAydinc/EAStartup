@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EAApplication.Users.DTOs
 {
-    public class CreateUserDto:EADTO
+    public class CreateUserDto
     {
         public CreateUserDto()
         {

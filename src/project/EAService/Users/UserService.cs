@@ -62,17 +62,17 @@ namespace EAService.Users
                 UpdatedDate = null,
                 Token= null,
             };
-            await _unitOfWork.GetRepository<User>().AddAsync(addUser);
+            await _unitOfWork.GetRepository<User>().Create(addUser);
             await _unitOfWork.SaveChangesAsync();
             return addUser;
         }
 
-        public async Task<User> Add(User user)
+        public async Task<User> Create(User user)
         {
             user.Password = _hashingAndGenerateToken.HashPassword(user.Password);
             user.CreatedDate = DateTime.UtcNow;
             user.IsActive = true;
-            await _unitOfWork.GetRepository<User>().AddAsync(user);
+            await _unitOfWork.GetRepository<User>().Create(user);
             await _unitOfWork.SaveChangesAsync();
             return user;
         }
@@ -90,7 +90,7 @@ namespace EAService.Users
 
         public async Task Delete(int id)
         {
-            await _unitOfWork.GetRepository<User>().Delete(id);
+            await _unitOfWork.GetRepository<User>().SoftDelete(id);
             await _unitOfWork.SaveChangesAsync();
         }
 

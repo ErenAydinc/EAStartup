@@ -23,4 +23,12 @@
     <ProjectReference Include="..\EAService\EAService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Auth\Queries\" />
+    <Folder Include="OperationClaims\Validation\" />
+    <Folder Include="OperationClaims\Rules\" />
+    <Folder Include="UserOperationClaims\Validation\" />
+    <Folder Include="Users\Validation\" />
+  </ItemGroup>
+
 </Project>

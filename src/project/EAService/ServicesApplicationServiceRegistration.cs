@@ -2,6 +2,8 @@
 using EARepository.Abstractions;
 using EARepository.Generic;
 using EASecurity.Authorization;
+using EAService.OperationClaims;
+using EAService.UserOperationClaims;
 using EAService.Users;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +15,8 @@ namespace EAService
         {
             services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationDbContext>>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserOperationClaimService, UserOperationClaimService>();
+            services.AddScoped<IOperationClaimService, OperationClaimService>();
             services.AddSingleton<HashingAndGenerateToken>();
             return services;
         }

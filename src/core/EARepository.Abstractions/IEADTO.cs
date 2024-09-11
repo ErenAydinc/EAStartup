@@ -8,6 +8,5 @@ namespace EARepository.Abstractions
 {
     public interface IEADTO
     {
-        public int Id { get; set; }
     }
 }

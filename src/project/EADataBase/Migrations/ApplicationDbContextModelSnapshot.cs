@@ -111,13 +111,13 @@ namespace EADataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OperationClaim");
+                    b.ToTable("OperationClaims");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 848, DateTimeKind.Local).AddTicks(7293),
+                            CreatedDate = new DateTime(2024, 8, 29, 11, 48, 5, 188, DateTimeKind.Local).AddTicks(690),
                             Name = "SystemAdmin"
                         });
                 });
@@ -165,12 +165,12 @@ namespace EADataBase.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 847, DateTimeKind.Local).AddTicks(1034),
+                            CreatedDate = new DateTime(2024, 8, 29, 11, 48, 5, 188, DateTimeKind.Local).AddTicks(379),
                             Email = "ea@ea.com",
                             FirstName = "ea",
                             IsActive = true,
                             LastName = "ea",
-                            Password = "$argon2id$v=19$m=65536,t=3,p=1$SU4wn/Lx8SkKhmpNhLGiwQ$M5y9dzXv5K8ePq0YnnB4cz3PVt3w9f+V5kPGFQL1mDY"
+                            Password = "$argon2id$v=19$m=65536,t=3,p=1$JIgXndPabe0HrNB0sKWMXQ$qhiiIOQpbOUdFv6R4JdgIjyHcuREQFGzZPk8AKIYAQ0"
                         });
                 });
 
@@ -199,13 +199,13 @@ namespace EADataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserOperationClaim");
+                    b.ToTable("UserOperationClaims");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 28, 14, 0, 29, 849, DateTimeKind.Local).AddTicks(4157),
+                            CreatedDate = new DateTime(2024, 8, 29, 11, 48, 5, 188, DateTimeKind.Local).AddTicks(735),
                             OperationClaimId = 1,
                             UserId = 1
                         });
