@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Core.EADomain;
+using Core.EADomain.Domains;
 using EAApplication.Users.DTOs;
-using EACrossCuttingConcerns.Generic;
-using EASecurity.Authorization;
 
 namespace EAApplication.Users.Profiles
 {

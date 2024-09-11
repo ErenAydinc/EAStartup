@@ -1,5 +1,5 @@
-﻿using EAApplication.Users.DTOs;
-using EACQRS.Pipelines.MediatrRequestCaching;
+﻿using Core.EAInfrastructure.Pipelines.MediatrRequestCaching;
+using EAApplication.Users.DTOs;
 using MediatR;
 
 namespace EAApplication.Users.Queries

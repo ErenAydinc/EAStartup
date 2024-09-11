@@ -1,10 +1,5 @@
-﻿using EARepository.Abstractions;
-using EASecurity.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.EADomain;
+using Core.EADomain.Domains;
 
 namespace EAService.OperationClaims
 {

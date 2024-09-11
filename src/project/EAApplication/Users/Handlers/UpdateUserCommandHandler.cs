@@ -1,14 +1,9 @@
 ﻿using AutoMapper;
+using Core.EADomain.Domains;
 using EAApplication.Users.Commands;
 using EAApplication.Users.DTOs;
-using EASecurity.Authorization;
 using EAService.Users;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EAApplication.Users.Handlers
 {

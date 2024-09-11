@@ -21,9 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\EACQRS.Pipelines\EACQRS.Pipelines.csproj" />
+    <ProjectReference Include="..\..\core\EAApplication\Core.EAApplication.csproj" />
     <ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
-    <ProjectReference Include="..\..\core\EASecurity.Authorization\EASecurity.Authorization.csproj" />
+    <ProjectReference Include="..\..\core\EADomain\Core.EADomain.csproj" />
+    <ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
     <ProjectReference Include="..\EADomain\EADomain.csproj" />
   </ItemGroup>
 

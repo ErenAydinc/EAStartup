@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
+using Core.EADomain;
 using EAApplication.OperationClaims.DTOs;
 using EAApplication.OperationClaims.Queries;
-using EACrossCuttingConcerns.Generic;
-using EASecurity.Authorization;
 using EAService.OperationClaims;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EAApplication.OperationClaims.Handlers
 {

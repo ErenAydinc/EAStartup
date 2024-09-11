@@ -1,21 +1,16 @@
-using Asp.Versioning;
-using Asp.Versioning.ApiExplorer;
+using Core.EAApplication;
 using EAApplication;
-using EACQRS.Pipelines;
 using EACrossCuttingConcerns.Exception;
 using EACrossCuttingConcerns.ExceptionLogging;
 using EADataBase;
 using EAService;
 using EAWebAPI.EACustomizing.Swagger;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Serilog;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 using System.Text.Json.Serialization;
+using EAInfrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -26,8 +21,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerWithVersion();
 builder.Services.AddCors();
 builder.Services.AddControllers().AddJsonOptions(j => { j.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; });
+builder.Services.AddCoreApplicationServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddDataBaseServices(builder.Configuration);
+builder.Services.AddCoreServicesApplicationServices();
 builder.Services.AddServicesApplicationServices();
 builder.Services.AddExceptionLoggingServices();
 builder.Services.AddExceptionRequestPipelineServices();

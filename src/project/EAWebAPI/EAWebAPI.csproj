@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -19,16 +19,17 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
-		<PackageReference Include="Serilog.Sinks.MySQL" Version="5.0.0" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.2" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\core\EACQRS.Pipelines\EACQRS.Pipelines.csproj" />
+		<ProjectReference Include="..\..\core\EAApplication\Core.EAApplication.csproj" />
 		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
 		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.Exception\EACrossCuttingConcerns.Exception.csproj" />
+		<ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
 		<ProjectReference Include="..\EAApplication\EAApplication.csproj" />
 		<ProjectReference Include="..\EADataBase\EADataBase.csproj" />
 		<ProjectReference Include="..\EAService\EAService.csproj" />

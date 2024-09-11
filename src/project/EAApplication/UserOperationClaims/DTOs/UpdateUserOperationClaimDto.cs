@@ -1,11 +1,4 @@
-﻿using EARepository.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EAApplication.UserOperationClaims.DTOs
+﻿namespace EAApplication.UserOperationClaims.DTOs
 {
     public class UpdateUserOperationClaimDto
     {

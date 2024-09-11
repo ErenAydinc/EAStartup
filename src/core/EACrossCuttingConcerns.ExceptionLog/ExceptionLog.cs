@@ -1,4 +1,4 @@
-﻿using EARepository.Abstractions;
+﻿using Core.EADomain;
 
 namespace EACrossCuttingConcerns.ExceptionLogging
 {

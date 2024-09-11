@@ -1,6 +1,4 @@
-﻿using EARepository.Abstractions;
-using EARepository.Generic;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace EACrossCuttingConcerns.ExceptionLogging
 {

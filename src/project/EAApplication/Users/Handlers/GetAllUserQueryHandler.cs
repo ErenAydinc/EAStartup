@@ -1,16 +1,9 @@
 ﻿using AutoMapper;
+using Core.EADomain;
 using EAApplication.Users.DTOs;
 using EAApplication.Users.Queries;
-using EACrossCuttingConcerns.Generic;
-using EARepository.Abstractions;
-using EASecurity.Authorization;
 using EAService.Users;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EAApplication.Users.Handlers
 {

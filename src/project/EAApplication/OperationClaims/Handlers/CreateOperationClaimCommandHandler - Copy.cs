@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Core.EADomain.Domains;
 using EAApplication.OperationClaims.Commands;
 using EAApplication.OperationClaims.DTOs;
-using EASecurity.Authorization;
 using EAService.OperationClaims;
 using MediatR;
 

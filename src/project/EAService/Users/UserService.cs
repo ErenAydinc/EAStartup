@@ -1,12 +1,8 @@
-﻿using EADomain;
-using EARepository.Abstractions;
-using EASecurity.Authorization;
-using Isopoh.Cryptography.Argon2;
+﻿using Core.EADomain;
+using Core.EADomain.Domains;
+using EADomain;
+using EAInfrastructure;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace EAService.Users
 {

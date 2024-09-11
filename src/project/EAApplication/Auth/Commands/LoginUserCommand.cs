@@ -1,5 +1,5 @@
-﻿using EAApplication.Auth.DTOs;
-using EACQRS.Pipelines.MediatrRequestLogging;
+﻿using Core.EAApplication.MediatrRequestLogging;
+using EAApplication.Auth.DTOs;
 using MediatR;
 
 namespace EAApplication.Auth.Commands

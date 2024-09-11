@@ -1,8 +1,8 @@
-﻿using EACQRS.Pipelines.MediatrRequestLogging;
+﻿using Core.EAApplication.MediatrRequestLogging;
+using Core.EADomain.Domains;
 using EACrossCuttingConcerns.ExceptionLogging;
-using EASecurity.Authorization;
+using EAInfrastructure;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace EADataBase
 {

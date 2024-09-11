@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\EARepository.Generic\EARepository.Generic.csproj" />
-    <ProjectReference Include="..\..\core\EASecurity.Authorization\EASecurity.Authorization.csproj" />
+    <ProjectReference Include="..\..\core\EADomain\Core.EADomain.csproj" />
+    <ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
     <ProjectReference Include="..\EADataBase\EADataBase.csproj" />
     <ProjectReference Include="..\EADomain\EADomain.csproj" />
   </ItemGroup>

@@ -1,7 +1,5 @@
 ﻿using EADataBase;
-using EARepository.Abstractions;
-using EARepository.Generic;
-using EASecurity.Authorization;
+using EAInfrastructure;
 using EAService.OperationClaims;
 using EAService.UserOperationClaims;
 using EAService.Users;
@@ -17,7 +15,6 @@ namespace EAService
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserOperationClaimService, UserOperationClaimService>();
             services.AddScoped<IOperationClaimService, OperationClaimService>();
-            services.AddSingleton<HashingAndGenerateToken>();
             return services;
         }
     }

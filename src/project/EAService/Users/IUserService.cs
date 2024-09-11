@@ -1,6 +1,6 @@
-﻿using EADomain;
-using EARepository.Abstractions;
-using EASecurity.Authorization;
+﻿using Core.EADomain;
+using Core.EADomain.Domains;
+using EADomain;
 
 namespace EAService.Users
 {

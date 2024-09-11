@@ -1,12 +1,6 @@
-﻿using EASecurity.Authorization;
-using EAService.UserOperationClaims;
+﻿using Core.EADomain.Domains;
 using EAService.Users;
 using Isopoh.Cryptography.Argon2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EAApplication.Users.Rules
 {
