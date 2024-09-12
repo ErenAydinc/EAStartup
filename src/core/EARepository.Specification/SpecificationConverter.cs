@@ -2,7 +2,7 @@
 using Ardalis.Specification.EntityFrameworkCore;
 using System.Linq;
 
-namespace EARepository.Specification
+namespace Core.EARepository.Specification
 {
     /// <summary>
     /// Specification Builder

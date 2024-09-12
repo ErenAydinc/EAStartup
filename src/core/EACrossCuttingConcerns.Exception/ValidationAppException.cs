@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EACrossCuttingConcerns.Exception
+namespace Core.EACrossCuttingConcerns.Exception
 {
     public class ValidationAppException : System.Exception
     {

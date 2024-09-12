@@ -1,5 +1,5 @@
 ﻿using EADataBase;
-using EAInfrastructure;
+using Core.EAInfrastructure;
 using EAService.OperationClaims;
 using EAService.UserOperationClaims;
 using EAService.Users;

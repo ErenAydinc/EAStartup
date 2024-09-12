@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
+    <ProjectReference Include="..\EACrossCuttingConcerns.ExceptionLog\Core.EACrossCuttingConcerns.ExceptionLogging.csproj" />
   </ItemGroup>
 
 </Project>

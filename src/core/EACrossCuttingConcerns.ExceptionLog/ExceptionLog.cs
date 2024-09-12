@@ -1,6 +1,6 @@
 ﻿using Core.EADomain;
 
-namespace EACrossCuttingConcerns.ExceptionLogging
+namespace Core.EACrossCuttingConcerns.ExceptionLogging
 {
     public class ExceptionLog(string message, string stackTree, string type,int statusCode) : EAEntity
     {

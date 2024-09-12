@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EADomain\Core.EADomain.csproj" />
-    <ProjectReference Include="..\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
+    <ProjectReference Include="..\EAInfrastructure.Pipelines\Core.EAInfrastructure.csproj" />
   </ItemGroup>
 
 </Project>

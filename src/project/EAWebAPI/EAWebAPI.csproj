@@ -27,9 +27,9 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\core\EAApplication\Core.EAApplication.csproj" />
-		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
-		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.Exception\EACrossCuttingConcerns.Exception.csproj" />
-		<ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
+		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\Core.EACrossCuttingConcerns.ExceptionLogging.csproj" />
+		<ProjectReference Include="..\..\core\EACrossCuttingConcerns.Exception\Core.EACrossCuttingConcerns.Exception.csproj" />
+		<ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\Core.EAInfrastructure.csproj" />
 		<ProjectReference Include="..\EAApplication\EAApplication.csproj" />
 		<ProjectReference Include="..\EADataBase\EADataBase.csproj" />
 		<ProjectReference Include="..\EAService\EAService.csproj" />

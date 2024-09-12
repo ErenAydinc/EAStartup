@@ -1,6 +1,6 @@
-﻿using EAInfrastructure;
+﻿using Core.EAInfrastructure;
 
-namespace EACrossCuttingConcerns.ExceptionLogging
+namespace Core.EACrossCuttingConcerns.ExceptionLogging
 {
     public class ExceptionLogService : IExceptionLogService
     {

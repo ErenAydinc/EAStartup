@@ -1,4 +1,6 @@
 ﻿using Asp.Versioning;
+using Core.EADomain.Domains;
+using Core.EAInfrastructure;
 using EAApplication.OperationClaims.Commands;
 using EAApplication.OperationClaims.DTOs;
 using EAApplication.OperationClaims.Queries;
@@ -13,6 +15,12 @@ namespace EAWebAPI.Controllers.v1
     {
         #region Fields
 
+        private readonly DynamicTranslationService _dynamicTranslationService;
+
+        public OperationClaimsController(DynamicTranslationService dynamicTranslationService)
+        {
+            _dynamicTranslationService = dynamicTranslationService;
+        }
 
         #endregion
 
@@ -23,19 +31,21 @@ namespace EAWebAPI.Controllers.v1
         #region Methods
         [MapToApiVersion("1.0")]
         [HttpGet]
-        public async Task<IActionResult> GetAllV1(int pageIndex, int pageSize)
+        public async Task<IActionResult> GetAllV1([FromHeader(Name = "Accept-Language")] string language,int pageIndex, int pageSize)
         {
             var query = new GetAllOperationClaimQuery { PageIndex = pageIndex, PageSize = pageSize };
             var operationClaims = await Mediator.Send(query);
-            return Ok(operationClaims);
+            var translatedJson = await _dynamicTranslationService.TranslateAsync(operationClaims, language);
+            return Ok(translatedJson);
         }
         [MapToApiVersion("1.0")]
         [HttpGet]
-        public async Task<IActionResult> GetByIdV1(int id)
+        public async Task<IActionResult> GetByIdV1([FromHeader(Name = "Accept-Language")] string language,int id)
         {
             var query = new GetByIdOperationClaimQuery(id);
             var operationClaim = await Mediator.Send(query);
-            return Ok(operationClaim);
+            var translatedJson = await _dynamicTranslationService.TranslateAsync(operationClaim, language);
+            return Ok(translatedJson);
         }
         [MapToApiVersion("1.0")]
         [HttpPost]

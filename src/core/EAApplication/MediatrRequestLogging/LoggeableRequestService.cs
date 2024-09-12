@@ -1,4 +1,4 @@
-﻿using EAInfrastructure;
+﻿using Core.EAInfrastructure;
 
 namespace Core.EAApplication.MediatrRequestLogging
 {

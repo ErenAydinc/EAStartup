@@ -1,4 +1,4 @@
-﻿namespace EACrossCuttingConcerns.Exception
+﻿namespace Core.EACrossCuttingConcerns.Exception
 {
     public class NotFoundException : System.Exception
     {

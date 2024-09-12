@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace EACrossCuttingConcerns.ExceptionLogging
+namespace Core.EACrossCuttingConcerns.ExceptionLogging
 {
     public static class ExceptionLoggingServiceRegistration
     {

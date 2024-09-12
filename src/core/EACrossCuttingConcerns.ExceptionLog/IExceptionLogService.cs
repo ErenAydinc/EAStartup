@@ -1,7 +1,4 @@
-﻿using EACrossCuttingConcerns.ExceptionLogging;
-using EARepository.Abstractions;
-
-namespace EACrossCuttingConcerns.ExceptionLogging
+﻿namespace Core.EACrossCuttingConcerns.ExceptionLogging
 {
     public interface IExceptionLogService
     {

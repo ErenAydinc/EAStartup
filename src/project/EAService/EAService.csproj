@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\EADomain\Core.EADomain.csproj" />
-    <ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />
+    <ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\Core.EAInfrastructure.csproj" />
     <ProjectReference Include="..\EADataBase\EADataBase.csproj" />
     <ProjectReference Include="..\EADomain\EADomain.csproj" />
   </ItemGroup>

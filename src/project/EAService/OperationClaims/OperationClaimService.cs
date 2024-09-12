@@ -1,6 +1,6 @@
 ﻿using Core.EADomain;
 using Core.EADomain.Domains;
-using EAInfrastructure;
+using Core.EAInfrastructure;
 
 namespace EAService.OperationClaims
 {

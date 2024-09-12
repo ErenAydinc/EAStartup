@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EAInfrastructure
+namespace Core.EAInfrastructure
 {
     public class UnitOfWork<TContext>:IUnitOfWork where TContext:DbContext
     {

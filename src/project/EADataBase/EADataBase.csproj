@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\EAApplication\Core.EAApplication.csproj" />
+    <ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\Core.EACrossCuttingConcerns.ExceptionLogging.csproj" />
     <ProjectReference Include="..\..\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj" />
     <ProjectReference Include="..\..\core\EADomain\Core.EADomain.csproj" />
     <ProjectReference Include="..\..\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj" />

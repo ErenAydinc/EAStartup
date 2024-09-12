@@ -1,13 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using EACrossCuttingConcerns.ExceptionLogging;
+﻿using Core.EACrossCuttingConcerns.ExceptionLogging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-namespace EACrossCuttingConcerns.Exception
+using System.Net;
+namespace Core.EACrossCuttingConcerns.Exception
 {
     public class ExceptionHandlingMiddleware(RequestDelegate next)
     {

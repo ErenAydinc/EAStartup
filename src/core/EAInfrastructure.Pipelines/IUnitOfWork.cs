@@ -1,6 +1,6 @@
 ﻿using Core.EADomain;
 
-namespace EAInfrastructure
+namespace Core.EAInfrastructure
 {
     public interface IUnitOfWork:IDisposable
     {

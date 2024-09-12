@@ -1,7 +1,7 @@
 ﻿using Core.EAApplication.MediatrRequestLogging;
+using Core.EACrossCuttingConcerns.ExceptionLogging;
 using Core.EADomain.Domains;
-using EACrossCuttingConcerns.ExceptionLogging;
-using EAInfrastructure;
+using Core.EAInfrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace EADataBase

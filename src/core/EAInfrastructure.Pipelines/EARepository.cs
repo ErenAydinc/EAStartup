@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace EAInfrastructure
+namespace Core.EAInfrastructure
 {
     public class EARepository<T> : IEARepository<T> where T : EAEntity
     {

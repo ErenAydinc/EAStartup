@@ -1,7 +1,7 @@
 ﻿using Core.EADomain;
 using System.Linq.Expressions;
 
-namespace EAInfrastructure
+namespace Core.EAInfrastructure
 {
     public interface IEARepository<T> where T : class
     {

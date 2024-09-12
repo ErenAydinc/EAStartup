@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{A570BD05-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{FDB1301A-5255-43F4-8EDC-2ACB7FB48DCF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EARepository.Specification", "src\core\EARepository.Specification\EARepository.Specification.csproj", "{7678EAF7-77FA-4AF0-8207-9463592C804B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EARepository.Specification", "src\core\EARepository.Specification\Core.EARepository.Specification.csproj", "{7678EAF7-77FA-4AF0-8207-9463592C804B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAWebAPI", "src\project\EAWebAPI\EAWebAPI.csproj", "{A8521AFE-7347-4220-9A46-DD241C19B5FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EACrossCuttingConcerns.Exception", "src\core\EACrossCuttingConcerns.Exception\EACrossCuttingConcerns.Exception.csproj", "{287CA5C4-E98C-4D95-B03F-877FACF5102F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EACrossCuttingConcerns.Exception", "src\core\EACrossCuttingConcerns.Exception\Core.EACrossCuttingConcerns.Exception.csproj", "{287CA5C4-E98C-4D95-B03F-877FACF5102F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EADataBase", "src\project\EADataBase\EADataBase.csproj", "{8369E646-CB7A-4A16-B853-4BDA1E119E23}"
 EndProject
@@ -21,15 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EADomain", "src\project\EAD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAService", "src\project\EAService\EAService.csproj", "{CEE0A30C-6858-402A-A442-A74246892643}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EACrossCuttingConcerns.ExceptionLogging", "src\core\EACrossCuttingConcerns.ExceptionLog\EACrossCuttingConcerns.ExceptionLogging.csproj", "{478D9A10-185F-4FA7-899C-88F122CA4B21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EACrossCuttingConcerns.ExceptionLogging", "src\core\EACrossCuttingConcerns.ExceptionLog\Core.EACrossCuttingConcerns.ExceptionLogging.csproj", "{478D9A10-185F-4FA7-899C-88F122CA4B21}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAApplication", "src\project\EAApplication\EAApplication.csproj", "{9C064872-0942-4809-9CBA-0FC0D7BA9F68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAInfrastructure", "src\core\EAInfrastructure.Pipelines\EAInfrastructure.csproj", "{DB95A86F-CB94-4F6D-9FF5-217467C4C782}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EAInfrastructure", "src\core\EAInfrastructure.Pipelines\Core.EAInfrastructure.csproj", "{DB95A86F-CB94-4F6D-9FF5-217467C4C782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.EADomain", "src\core\EADomain\Core.EADomain.csproj", "{DEA4AE36-AAC1-451C-8F9C-92136E266F5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EADomain", "src\core\EADomain\Core.EADomain.csproj", "{DEA4AE36-AAC1-451C-8F9C-92136E266F5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.EAApplication", "src\core\EAApplication\Core.EAApplication.csproj", "{094B77C5-71B6-4284-898E-D830F20D4A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.EAApplication", "src\core\EAApplication\Core.EAApplication.csproj", "{094B77C5-71B6-4284-898E-D830F20D4A82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

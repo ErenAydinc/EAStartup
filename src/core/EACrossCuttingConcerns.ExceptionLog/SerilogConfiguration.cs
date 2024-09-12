@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
-namespace EACrossCuttingConcerns.ExceptionLogging
+namespace Core.EACrossCuttingConcerns.ExceptionLogging
 {
     public static class SerilogConfiguration
     {

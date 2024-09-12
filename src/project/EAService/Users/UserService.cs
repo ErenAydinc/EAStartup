@@ -1,7 +1,7 @@
 ﻿using Core.EADomain;
 using Core.EADomain.Domains;
 using EADomain;
-using EAInfrastructure;
+using Core.EAInfrastructure;
 using Microsoft.Extensions.Configuration;
 
 namespace EAService.Users
