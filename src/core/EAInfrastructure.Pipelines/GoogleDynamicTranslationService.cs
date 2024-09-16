@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Core.EAInfrastructure
 {
-    public class DynamicTranslationService
+    public class GoogleDynamicTranslationService
     {
-        private readonly ITranslationService _translationService;
+        private readonly IGoogleTranslationService _googleTranslationService;
 
-        public DynamicTranslationService(ITranslationService translationService)
+        public GoogleDynamicTranslationService(IGoogleTranslationService googleTranslationService)
         {
-            _translationService = translationService;
+            _googleTranslationService = googleTranslationService;
         }
 
         public async Task<T> TranslateAsync<T>(T entity, string targetLanguage)
@@ -40,7 +40,7 @@ namespace Core.EAInfrastructure
                     {
                         if (property.Value.ValueKind == JsonValueKind.String)
                         {
-                            var translatedText = await _translationService.TranslateAsync(property.Value.GetString(), targetLanguage);
+                            var translatedText = await _googleTranslationService.TranslateAsync(property.Value.GetString(), targetLanguage);
                             writer.WriteString(property.Name, translatedText);
                         }
                         else if (property.Value.ValueKind == JsonValueKind.Object)

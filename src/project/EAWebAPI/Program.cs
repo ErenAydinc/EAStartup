@@ -25,7 +25,7 @@ builder.Services.AddCoreApplicationServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddDataBaseServices(builder.Configuration);
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-builder.Services.AddHttpClient<ITranslationService, TranslationService>();
+builder.Services.AddHttpClient<IGoogleTranslationService, GoogleTranslationService>();
 builder.Services.AddCoreServicesApplicationServices();
 builder.Services.AddServicesApplicationServices();
 builder.Services.AddExceptionLoggingServices();

@@ -1,6 +1,6 @@
 ﻿namespace Core.EAInfrastructure
 {
-    public interface ITranslationService
+    public interface IGoogleTranslationService
     {
         Task<string> TranslateAsync(string text, string targetLanguage);
     }

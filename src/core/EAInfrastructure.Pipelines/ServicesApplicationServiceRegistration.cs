@@ -13,7 +13,7 @@ namespace Core.EAInfrastructure
         {
 
             // HttpClient ve TranslationService ekleme
-            services.AddScoped<DynamicTranslationService>();
+            services.AddScoped<GoogleDynamicTranslationService>();
             //services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationDbContext>>();
             services.AddSingleton<HashingAndGenerateToken>();
             return services;

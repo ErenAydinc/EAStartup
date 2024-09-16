@@ -15,11 +15,11 @@ namespace EAWebAPI.Controllers.v1
     {
         #region Fields
 
-        private readonly DynamicTranslationService _dynamicTranslationService;
+        private readonly GoogleDynamicTranslationService _googleDynamicTranslationService;
 
-        public OperationClaimsController(DynamicTranslationService dynamicTranslationService)
+        public OperationClaimsController(GoogleDynamicTranslationService googleDynamicTranslationService)
         {
-            _dynamicTranslationService = dynamicTranslationService;
+            _googleDynamicTranslationService = googleDynamicTranslationService;
         }
 
         #endregion
@@ -35,7 +35,7 @@ namespace EAWebAPI.Controllers.v1
         {
             var query = new GetAllOperationClaimQuery { PageIndex = pageIndex, PageSize = pageSize };
             var operationClaims = await Mediator.Send(query);
-            var translatedJson = await _dynamicTranslationService.TranslateAsync(operationClaims, language);
+            var translatedJson = await _googleDynamicTranslationService.TranslateAsync(operationClaims, language);
             return Ok(translatedJson);
         }
         [MapToApiVersion("1.0")]
@@ -44,7 +44,7 @@ namespace EAWebAPI.Controllers.v1
         {
             var query = new GetByIdOperationClaimQuery(id);
             var operationClaim = await Mediator.Send(query);
-            var translatedJson = await _dynamicTranslationService.TranslateAsync(operationClaim, language);
+            var translatedJson = await _googleDynamicTranslationService.TranslateAsync(operationClaim, language);
             return Ok(translatedJson);
         }
         [MapToApiVersion("1.0")]

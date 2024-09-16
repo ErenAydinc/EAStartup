@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Core.EAInfrastructure
 {
-    public class TranslationService : ITranslationService
+    public class GoogleTranslationService : IGoogleTranslationService
     {
         private readonly HttpClient _httpClient;
 
-        public TranslationService(HttpClient httpClient)
+        public GoogleTranslationService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
